@@ -1,7 +1,7 @@
-// src/autores/autores.controller.ts
+
 import {
   Controller, Get, Post, Body, Param, Patch, Delete,
-  UsePipes, ValidationPipe, ParseUUIDPipe, // <-- aquí
+  UsePipes, ValidationPipe, ParseUUIDPipe,
 } from '@nestjs/common';
 import { AutoresService } from './autores.service';
 import { CreateAutoreDto } from './dto/create-autore.dto';
@@ -18,20 +18,20 @@ export class AutoresController {
   }
 
   @Get(':id')
-  findOne(@Param('id', new ParseUUIDPipe()) id: string) { // sin '+'
+  findOne(@Param('id', new ParseUUIDPipe()) id: string) { 
     return this.autoresService.findOne(id);
   }
 
   @Patch(':id')
   update(
-    @Param('id', new ParseUUIDPipe()) id: string,          // sin '+'
-    @Body() dto: UpdateAutoreDto,                            // (si tu dto se llama updateAutoreDto, usa ese nombre)
+    @Param('id', new ParseUUIDPipe()) id: string,         
+    @Body() dto: UpdateAutoreDto,                           
   ) {
     return this.autoresService.update(id, dto);
   }
 
   @Delete(':id')
-  remove(@Param('id', new ParseUUIDPipe()) id: string) {    // sin '+'
+  remove(@Param('id', new ParseUUIDPipe()) id: string) {   
     return this.autoresService.remove(id);
   }
 }
